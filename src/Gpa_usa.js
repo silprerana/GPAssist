@@ -15,7 +15,7 @@ export class Gpa_usa extends React.Component {
             no_more_subject: false
         }
     }
-
+    // added a comment
     add_subject (e)  {
         e.preventDefault();
         let s_name = this.s_name.value;
