@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Concert+One&display=swap');
+
+* {
+    text-align: center;
+}
+
+.body {
+    font-family: 'Exo 2', sans-serif;
+    font-size: 40px;
+}
+
+.title {
+    font-family: 'Concert One', cursive;
+    font-size: 250px;
+    background-color: #CDB4DB;
+    padding: 50px 0px;
+    border-radius: 0px 0px 140px 140px;
+} 
+
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

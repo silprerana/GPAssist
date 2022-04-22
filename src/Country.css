@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@200&display=swap');
+
+* {
+    font-family: 'Exo 2', sans-serif;
+}
+
+.country-title {
+    background-color: #BDE0FE;
+    font-size: 72px;
+    margin: 0px 10%;
+    padding: 8% 0px;
+    border-radius: 0px 0px 140px 140px;
+}
+
+.buttons {
+    margin-top: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
