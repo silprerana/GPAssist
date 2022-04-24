@@ -30,3 +30,23 @@
     margin: 0px 20%;    
 }
 
+
+/* Showing GPA Results */
+
+.vertical-flex-score {
+    display: flex;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+    height: 80vh;
+}
+
+.score-heading {
+    width: 50%;
+    background-color: #EEA990;
+    border-radius: 0px 70px 70px 0px;
+    height: 100%;
+}
+
+.score-info {
+    
+}

@@ -9,8 +9,24 @@ export class Gpa_usa extends React.Component {
         super(props);
         this.add_subject = this.add_subject.bind(this);
         this.no_more_subjects = this.no_more_subjects.bind(this);
-        this.subjects = [];
-        // this.no_more_subject = false;
+        this.gpa_result = this.gpa_result.bind(this);
+        this.grades = []
+        this.credits = [];
+        this.grade_points_obj = {
+            'A+': 4.3,
+            'A': 4,
+            'A-': 3.7,
+            'B+': 3.3,
+            'B': 3,
+            'B-': 2.7,
+            'C+': 2.3,
+            'C': 2,
+            'C-': 1.7,
+            'D+': 1.3,
+            'D': 1,
+            'D-': 0.7,
+            'F': 0,
+        };
         this.state = {
             no_more_subject: false
         }
@@ -18,24 +34,39 @@ export class Gpa_usa extends React.Component {
     // added a comment
     add_subject (e)  {
         e.preventDefault();
-        let s_name = this.s_name.value;
         e.target.value = "";
         let s_grade = this.s_grade.value;
         let s_credits = this.s_credits.value;
-        this.subjects.push([s_name, s_grade, s_credits]);
-        console.log(this.subjects);
+        this.grades.push(s_grade);
+        this.credits.push(s_credits);
+        console.log(this.grades);
+        console.log(this.credits);
     }
 
     no_more_subjects () {
         this.state.no_more_subject = true;
-        console.log("No more subjects pressed");
-        console.log(this.no_more_subjects)
+        console.log(this.state.no_more_subject)
+        this.forceUpdate(); 
+    }
+
+    gpa_result () {
+        let total_credits = 0;
+        let total_grade_points = 0;
+        for (let i = 0; i < this.credits.length; i++) {
+            total_credits += parseInt(this.credits[i]);
+        }
+
+        for (let i = 0; i < this.credits.length; i++) {
+            let grade_point = this.grade_points_obj[this.grades[i]];
+            total_grade_points += this.credits[i]*grade_point;
+        }
+
+        console.log("GPA: " + (total_grade_points/total_credits).toFixed(3));
     }
 
     render () {
-        if (this.state.no_more_subjects != true) {
         return (
-            
+            !this.state.no_more_subject ? 
             <div>
                 <div className='gpa-usa-title'>Enter a Subject</div>
                 <div className='form-element'>
@@ -55,15 +86,21 @@ export class Gpa_usa extends React.Component {
 
                 <div className='subject-buttons'>
                     <div onClick={this.add_subject}><Button backgroundColor='#96E072' content='Add Subject'/></div>
-                    <div onClick={this.no_more_subjects}><Button backgroundColor='#FF686B' content='No More Subjects?'/></div>
+                    <div onClick={this.no_more_subjects}><Button backgroundColor='#FF686B' content='Done'/></div>
+                </div>
+            </div> :
+            <div className='vertical-flex-score'>
+                <div className='score-heading'>
+                    <h1>Score</h1>
+                </div>
+                <div className='score-info'>
+                    <h1>GPA</h1>
+                    <h3>Show GPA Here</h3>
+                    <h3>Total Credits: </h3>
+                    <h3>Total Grade Points: </h3>
                 </div>
             </div>
-        ) } else {
-            return (
-                <div>Wassup, this is after there are no more subjects</div>
-            )
-        }
-
+        )
         
     }  
 }  

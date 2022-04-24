@@ -4,6 +4,13 @@ import './Home.css'
 import { Country } from './Country.js';
 import {Route, Routes, BrowserRouter as Router, Link} from "react-router-dom";
 
+/* 
+    When changes are done
+    add all files git add .
+    make a commit - git commit -m ""
+    push to repo - git push -u origin main
+*/
+
 export class Home extends React.Component {
     render () {
         return (
