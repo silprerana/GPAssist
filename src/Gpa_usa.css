@@ -35,18 +35,52 @@
 
 .vertical-flex-score {
     display: flex;
-    margin-top: 10vh;
-    margin-bottom: 10vh;
-    height: 80vh;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    height: 90vh;
 }
 
 .score-heading {
     width: 50%;
     background-color: #EEA990;
     border-radius: 0px 70px 70px 0px;
-    height: 100%;
+    height: 90vh;
+    flex: 0 0 35vw;
+    line-height: 90vh;
+    margin-right: 100px;
+}
+
+#score-title {
+    font-size: 64px;
 }
 
 .score-info {
-    
+    width: 35vw;
+    margin: 0 10vw 0 10vw ;
+}
+
+.gpa-title {
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.banner {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.gpa {
+ text-align: center;
+ background-color: #FFF75E;
+ font-size: 64px;
+ border-radius: 20px;
+ padding: 70px 50px;
+}
+
+.totals {
+    font-size: 36px;
+}
+
+img {
+    vertical-align: middle;
 }

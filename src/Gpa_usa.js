@@ -3,6 +3,8 @@ import {Button} from './Elements/Button.js';
 import {Country} from './Country.js'
 import './Gpa_usa.css'
 import {Route, Routes, BrowserRouter as Router, Link} from "react-router-dom";
+import fireworks from './res/fireworks.png';
+import fireworks_flip from './res/fireworks_flip.png';
 
 export class Gpa_usa extends React.Component {
     constructor (props) {
@@ -12,6 +14,9 @@ export class Gpa_usa extends React.Component {
         this.gpa_result = this.gpa_result.bind(this);
         this.grades = []
         this.credits = [];
+        this.total_credits = 0;
+        this.total_grade_points = 0;
+        this.gpa = 0;
         this.grade_points_obj = {
             'A+': 4.3,
             'A': 4,
@@ -46,22 +51,24 @@ export class Gpa_usa extends React.Component {
     no_more_subjects () {
         this.state.no_more_subject = true;
         console.log(this.state.no_more_subject)
+        this.gpa_result();
         this.forceUpdate(); 
     }
 
     gpa_result () {
-        let total_credits = 0;
-        let total_grade_points = 0;
+        
         for (let i = 0; i < this.credits.length; i++) {
-            total_credits += parseInt(this.credits[i]);
+            this.total_credits += parseInt(this.credits[i]);
         }
 
         for (let i = 0; i < this.credits.length; i++) {
             let grade_point = this.grade_points_obj[this.grades[i]];
-            total_grade_points += this.credits[i]*grade_point;
+            this.total_grade_points += this.credits[i]*grade_point;
         }
 
-        console.log("GPA: " + (total_grade_points/total_credits).toFixed(3));
+        this.total_grade_points = this.total_grade_points.toFixed(2);
+
+        this.gpa = (this.total_grade_points/this.total_credits).toFixed(3);
     }
 
     render () {
@@ -91,13 +98,18 @@ export class Gpa_usa extends React.Component {
             </div> :
             <div className='vertical-flex-score'>
                 <div className='score-heading'>
-                    <h1>Score</h1>
+                    <h1 id='score-title'>Score</h1>
                 </div>
                 <div className='score-info'>
-                    <h1>GPA</h1>
-                    <h3>Show GPA Here</h3>
-                    <h3>Total Credits: </h3>
-                    <h3>Total Grade Points: </h3>
+                    <div className='banner'>
+                        <img src={fireworks_flip}/>
+                        <h1 className='gpa-title'>GPA</h1>
+                        <img src={fireworks}/>
+                    </div>
+                    
+                    <h3 className='gpa'>{this.gpa}</h3>
+                    <h3 className='totals'>Total Credits: {this.total_credits}</h3>
+                    <h3 className='totals'>Total Grade Points: {this.total_grade_points}</h3>
                 </div>
             </div>
         )
